@@ -14,5 +14,10 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void Bai1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
