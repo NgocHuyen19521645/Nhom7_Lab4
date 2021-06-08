@@ -8,16 +8,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Bai4 : Form
+    public partial class Form1 : Form
     {
-        public Bai4()
+        public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Bai4_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
