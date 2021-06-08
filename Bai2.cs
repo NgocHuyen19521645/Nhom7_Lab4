@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -14,5 +16,32 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void Post(string url)
+        {
+            WebRequest req = WebRequest.Create(url);
+            req.Method = "POST";
+            byte[] postdata = Encoding.ASCII.GetBytes(tbContent.Text);
+
+            Stream streamdata = req.GetRequestStream();
+            streamdata.Write(postdata, 0, postdata.Length);
+            streamdata.Close();
+
+            WebResponse res = req.GetResponse();
+            using (Stream dataStream = res.GetResponseStream())
+            {
+                StreamReader sr = new StreamReader(dataStream);
+                string responseFromServer = sr.ReadToEnd();
+                rtbResponse.Text = responseFromServer;
+            }
+
+        }
+
+        private void btnPost_Click(object sender, EventArgs e)
+        {
+            Post(tbURL.Text);
+        }
+
+
     }
 }
