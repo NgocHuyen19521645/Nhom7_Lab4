@@ -24,19 +24,29 @@ namespace WindowsFormsApp1
 
         private string getHTML(string szURL)
         {
-            // Create a request for the URL.
-            WebRequest request = WebRequest.Create(szURL);
-            // Get the response.
-            WebResponse response = request.GetResponse();
-            // Get the stream containing content returned by the server.
-            Stream dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            // Close the response.
-            response.Close();
-            return responseFromServer;
+            try
+            {
+                // Create a request for the URL.
+                WebRequest request = WebRequest.Create(szURL);
+                // Get the response.
+                WebResponse response = request.GetResponse();
+                // Get the stream containing content returned by the server.
+                Stream dataStream = response.GetResponseStream();
+                // Open the stream using a StreamReader for easy access.
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.
+                string responseFromServer = reader.ReadToEnd();
+                // Close the response.
+                response.Close();
+                return responseFromServer;
+            }
+            catch
+            {
+                MessageBox.Show("Sai URL!!");
+                return "";
+            }
+            
+
         }
         private void btnGet_Click(object sender, EventArgs e)
         {
