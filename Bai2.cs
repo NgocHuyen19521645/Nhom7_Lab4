@@ -19,7 +19,9 @@ namespace WindowsFormsApp1
 
         private void Post(string url)
         {
-            WebRequest req = WebRequest.Create(url);
+            try
+            {
+                WebRequest req = WebRequest.Create(url);
             req.Method = "POST";
             byte[] postdata = Encoding.ASCII.GetBytes(tbContent.Text);
 
@@ -33,6 +35,12 @@ namespace WindowsFormsApp1
                 StreamReader sr = new StreamReader(dataStream);
                 string responseFromServer = sr.ReadToEnd();
                 rtbResponse.Text = responseFromServer;
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Sai URL!!");
+                return ;
             }
 
         }
