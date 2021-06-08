@@ -165,7 +165,8 @@ namespace WindowsFormsApp1
 
         private void Bai4_Load(object sender, EventArgs e)
         {
-            
+            toolStripComboBox1.Text = "http://google.com";
+            wb.Navigate("http://google.com");
         }
 
         private void toolStrip1_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
